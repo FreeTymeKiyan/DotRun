@@ -13,6 +13,7 @@
     b2World *_world;
     b2Body *_body;
     CCSprite *_ball;
+    CGPoint posChange;
 }
 
 +(id) scene;
