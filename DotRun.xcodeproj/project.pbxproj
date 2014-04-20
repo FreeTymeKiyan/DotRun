@@ -188,6 +188,7 @@
 		BB3AFB3E1903400500D53E0B /* IntroLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB3AFB3D1903400500D53E0B /* IntroLayer.mm */; };
 		BB3AFB411903400500D53E0B /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB3AFB401903400500D53E0B /* GLES-Render.mm */; };
 		BB3AFB431903400500D53E0B /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = BB3AFB421903400500D53E0B /* blocks.png */; };
+		BB968D621903517200BDA634 /* Ball.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB968D611903517200BDA634 /* Ball.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -569,6 +570,7 @@
 		BB3AFB3F1903400500D53E0B /* GLES-Render.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GLES-Render.h"; sourceTree = "<group>"; };
 		BB3AFB401903400500D53E0B /* GLES-Render.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "GLES-Render.mm"; sourceTree = "<group>"; };
 		BB3AFB421903400500D53E0B /* blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blocks.png; path = Resources/blocks.png; sourceTree = "<group>"; };
+		BB968D611903517200BDA634 /* Ball.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ball.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -649,6 +651,7 @@
 			children = (
 				BB3AF9141903400300D53E0B /* Default.png */,
 				BB3AF9161903400300D53E0B /* Default@2x.png */,
+				BB968D611903517200BDA634 /* Ball.jpg */,
 				BB3AF9181903400300D53E0B /* Default-568h@2x.png */,
 				BB3AF91A1903400300D53E0B /* Default-Landscape~ipad.png */,
 				BB3AF91C1903400300D53E0B /* Icon-72.png */,
@@ -1245,6 +1248,7 @@
 				BB3AF92A1903400300D53E0B /* iTunesArtwork in Resources */,
 				BB3AFB431903400500D53E0B /* blocks.png in Resources */,
 				BB3AF9231903400300D53E0B /* Icon-Small@2x.png in Resources */,
+				BB968D621903517200BDA634 /* Ball.jpg in Resources */,
 				BB3AF91B1903400300D53E0B /* Default-Landscape~ipad.png in Resources */,
 				BB3AF9191903400300D53E0B /* Default-568h@2x.png in Resources */,
 				BB3AF9271903400300D53E0B /* Icon@2x.png in Resources */,
@@ -1533,6 +1537,7 @@
 				BB3AFB481903400500D53E0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
