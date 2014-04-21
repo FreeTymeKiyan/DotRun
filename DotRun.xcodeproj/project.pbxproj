@@ -189,6 +189,7 @@
 		BB3AFB411903400500D53E0B /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB3AFB401903400500D53E0B /* GLES-Render.mm */; };
 		BB3AFB431903400500D53E0B /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = BB3AFB421903400500D53E0B /* blocks.png */; };
 		BB968D621903517200BDA634 /* Ball.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB968D611903517200BDA634 /* Ball.jpg */; };
+		BB968D6419036B8500BDA634 /* bar.png in Resources */ = {isa = PBXBuildFile; fileRef = BB968D6319036B8500BDA634 /* bar.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -571,6 +572,7 @@
 		BB3AFB401903400500D53E0B /* GLES-Render.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "GLES-Render.mm"; sourceTree = "<group>"; };
 		BB3AFB421903400500D53E0B /* blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blocks.png; path = Resources/blocks.png; sourceTree = "<group>"; };
 		BB968D611903517200BDA634 /* Ball.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ball.jpg; sourceTree = "<group>"; };
+		BB968D6319036B8500BDA634 /* bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -649,6 +651,7 @@
 		BB3AF9131903400300D53E0B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BB968D6319036B8500BDA634 /* bar.png */,
 				BB3AF9141903400300D53E0B /* Default.png */,
 				BB3AF9161903400300D53E0B /* Default@2x.png */,
 				BB968D611903517200BDA634 /* Ball.jpg */,
@@ -1244,6 +1247,7 @@
 				BB3AF9211903400300D53E0B /* Icon-Small.png in Resources */,
 				BB3AF91D1903400300D53E0B /* Icon-72.png in Resources */,
 				BB3AF9151903400300D53E0B /* Default.png in Resources */,
+				BB968D6419036B8500BDA634 /* bar.png in Resources */,
 				BB3AF91F1903400300D53E0B /* Icon-Small-50.png in Resources */,
 				BB3AF92A1903400300D53E0B /* iTunesArtwork in Resources */,
 				BB3AFB431903400500D53E0B /* blocks.png in Resources */,

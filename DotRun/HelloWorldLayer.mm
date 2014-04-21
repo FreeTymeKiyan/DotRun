@@ -9,6 +9,8 @@
 #import "HelloWorldLayer.h"
 
 #define PTM_RATIO 32.0
+#define FROM_RIGHT 0
+#define FROM_LEFT 1
 
 @implementation HelloWorldLayer
 
@@ -24,7 +26,7 @@
         CGSize winSize = [CCDirector sharedDirector].winSize;
         [self setAccelerometerEnabled:true];
         
-        _ball = [CCSprite spriteWithFile:@"Ball.jpg" rect:CGRectMake(0, 0, 52, 52)];
+        _ball = [CCSprite spriteWithFile:@"Ball.jpg" rect:CGRectMake(0, 0, 26, 26)];
         _ball.position = ccp(winSize.width / 2, winSize.height / 2);
         [self addChild:_ball];
 //        NSLog(@"%f, %f", winSize.width / 2, winSize.height / 2);
@@ -66,8 +68,48 @@
         _body->CreateFixture(&ballShapeDef);
         
         [self schedule:@selector(update:)];
+        [self schedule:@selector(gameLogic:) interval:1.0];
     }
     return self;
+}
+
+-(void) gameLogic:(ccTime)dt {
+    [self generateBar: FROM_LEFT];
+    [self generateBar: FROM_RIGHT];
+}
+
+-(void) generateBar: (int) direction {
+    CCSprite *bar = [CCSprite spriteWithFile:@"bar.png" rect:CGRectMake(0, 0, 30, 30)];
+    
+    CGSize winSize = [[CCDirector sharedDirector] winSize];
+    int minY = bar.contentSize.height / 2;
+    int maxY = winSize.height - bar.contentSize.height / 2;
+    int rangeY = maxY - minY;
+    int actualY = (arc4random() % rangeY) + minY;
+    CGPoint dest;
+    if (direction == FROM_RIGHT) {
+        bar.position = ccp(winSize.width + (bar.contentSize.width / 2), actualY);
+        dest = ccp(-bar.contentSize.width/2, actualY);
+    } else {
+        bar.position = ccp(-bar.contentSize.width / 2, actualY);
+        dest = ccp(winSize.width + (bar.contentSize.width / 2), actualY);
+    }
+    [self addChild:bar];
+    
+    int minDuration = 2.0;
+    int maxDuration = 4.0;
+    int rangeDuration = maxDuration - minDuration;
+    int actualDuration = (arc4random() % rangeDuration) + minDuration;
+    id actionMove = [CCMoveTo actionWithDuration:actualDuration
+                                        position:dest];
+    id actionMoveDone = [CCCallFuncN actionWithTarget:self
+                                             selector:@selector(spriteMoveFinished:)];
+    [bar runAction:[CCSequence actions:actionMove, actionMoveDone, nil]];
+}
+
+-(void) spriteMoveFinished:(id)sender {
+    CCSprite *sprite = (CCSprite *)sender;
+    [self removeChild:sprite cleanup:YES];
 }
 
 -(void) update:(ccTime) delta {
