@@ -8,12 +8,14 @@
 
 #import "cocos2d.h"
 #import "Box2D.h"
+#import "Level.h"
 
 @interface HelloWorldLayer : CCLayer {
     b2World *_world;
     b2Body *_body;
     CCSprite *_ball;
     CGPoint posChange;
+    Level *level;
 }
 
 +(id) scene;

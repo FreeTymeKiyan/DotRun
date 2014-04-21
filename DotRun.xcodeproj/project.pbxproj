@@ -188,6 +188,7 @@
 		BB3AFB3E1903400500D53E0B /* IntroLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB3AFB3D1903400500D53E0B /* IntroLayer.mm */; };
 		BB3AFB411903400500D53E0B /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB3AFB401903400500D53E0B /* GLES-Render.mm */; };
 		BB3AFB431903400500D53E0B /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = BB3AFB421903400500D53E0B /* blocks.png */; };
+		BB5B8E9519058D7E00FDD0A1 /* Level.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB5B8E9419058D7E00FDD0A1 /* Level.mm */; };
 		BB968D621903517200BDA634 /* Ball.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB968D611903517200BDA634 /* Ball.jpg */; };
 		BB968D6419036B8500BDA634 /* bar.png in Resources */ = {isa = PBXBuildFile; fileRef = BB968D6319036B8500BDA634 /* bar.png */; };
 /* End PBXBuildFile section */
@@ -571,6 +572,8 @@
 		BB3AFB3F1903400500D53E0B /* GLES-Render.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GLES-Render.h"; sourceTree = "<group>"; };
 		BB3AFB401903400500D53E0B /* GLES-Render.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "GLES-Render.mm"; sourceTree = "<group>"; };
 		BB3AFB421903400500D53E0B /* blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blocks.png; path = Resources/blocks.png; sourceTree = "<group>"; };
+		BB5B8E9319058D7E00FDD0A1 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
+		BB5B8E9419058D7E00FDD0A1 /* Level.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Level.mm; sourceTree = "<group>"; };
 		BB968D611903517200BDA634 /* Ball.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ball.jpg; sourceTree = "<group>"; };
 		BB968D6319036B8500BDA634 /* bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -638,6 +641,8 @@
 				BB3AFB391903400500D53E0B /* HelloWorldLayer.h */,
 				BB3AFB3A1903400500D53E0B /* HelloWorldLayer.mm */,
 				BB3AFB3C1903400500D53E0B /* IntroLayer.h */,
+				BB5B8E9319058D7E00FDD0A1 /* Level.h */,
+				BB5B8E9419058D7E00FDD0A1 /* Level.mm */,
 				BB3AFB3D1903400500D53E0B /* IntroLayer.mm */,
 				BB3AFB3F1903400500D53E0B /* GLES-Render.h */,
 				BB3AFB401903400500D53E0B /* GLES-Render.mm */,
@@ -1326,6 +1331,7 @@
 				BB3AFA911903400400D53E0B /* plane.c in Sources */,
 				BB3AFAFD1903400400D53E0B /* b2ContactSolver.cpp in Sources */,
 				BB3AFA3D1903400400D53E0B /* CCProfiling.m in Sources */,
+				BB5B8E9519058D7E00FDD0A1 /* Level.mm in Sources */,
 				BB3AFB101903400400D53E0B /* b2FrictionJoint.cpp in Sources */,
 				BB3AF9D41903400300D53E0B /* CCShaderCache.m in Sources */,
 				BB3AF9DA1903400300D53E0B /* CCSprite.m in Sources */,

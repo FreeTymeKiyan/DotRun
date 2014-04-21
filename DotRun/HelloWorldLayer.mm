@@ -11,6 +11,9 @@
 #define PTM_RATIO 32.0
 #define FROM_RIGHT 0
 #define FROM_LEFT 1
+#define IS_UPPER 0
+#define IS_LOWER 1
+#define THRESHOLD 10
 
 @implementation HelloWorldLayer
 
@@ -31,7 +34,7 @@
         [self addChild:_ball];
 //        NSLog(@"%f, %f", winSize.width / 2, winSize.height / 2);
         
-        b2Vec2 gravity = b2Vec2(0.0f, -30.0f);
+        b2Vec2 gravity = b2Vec2(0.0f, 0.0f);
         _world = new b2World(gravity);
         _world->SetAllowSleeping(true);
         
@@ -67,41 +70,56 @@
         ballShapeDef.restitution = 0.0f;
         _body->CreateFixture(&ballShapeDef);
         
+        level = [[Level alloc] init];
         [self schedule:@selector(update:)];
-        [self schedule:@selector(gameLogic:) interval:1.0];
+        [self schedule:@selector(gameLogic:) interval:[level getInterval]];
     }
     return self;
 }
 
 -(void) gameLogic:(ccTime)dt {
-    [self generateBar: FROM_LEFT];
-    [self generateBar: FROM_RIGHT];
+    [self generatePair: 0];
 }
 
--(void) generateBar: (int) direction {
-    CCSprite *bar = [CCSprite spriteWithFile:@"bar.png" rect:CGRectMake(0, 0, 30, 30)];
-    
+-(void) generatePair: (int) pattern {
+    int randomHeight = abs(arc4random());
+//    [self generateBar:IS_UPPER direction:FROM_LEFT height:randomHeight];
+    [self generateBar:IS_LOWER direction:FROM_LEFT height:randomHeight];
+//    [self generateBar:IS_LOWER direction:FROM_RIGHT height:randomHeight];
+    [self generateBar:IS_UPPER direction:FROM_RIGHT height:randomHeight];
+}
+
+-(void) generateBar : (int) position direction : (int) direction height: (int) randomHeight {
     CGSize winSize = [[CCDirector sharedDirector] winSize];
-    int minY = bar.contentSize.height / 2;
-    int maxY = winSize.height - bar.contentSize.height / 2;
-    int rangeY = maxY - minY;
-    int actualY = (arc4random() % rangeY) + minY;
+    int minY = 0;
+    int maxY = winSize.height - THRESHOLD - _ball.contentSize.height;;
+    int range = maxY - minY;
+    randomHeight = randomHeight % range + minY;
+    CCSprite *bar;
     CGPoint dest;
-    if (direction == FROM_RIGHT) {
-        bar.position = ccp(winSize.width + (bar.contentSize.width / 2), actualY);
-        dest = ccp(-bar.contentSize.width/2, actualY);
-    } else {
-        bar.position = ccp(-bar.contentSize.width / 2, actualY);
-        dest = ccp(winSize.width + (bar.contentSize.width / 2), actualY);
+    if (position == IS_LOWER) {
+        bar = [CCSprite spriteWithFile:@"bar.png" rect:CGRectMake(0, 0, 10, randomHeight)];
+        if (direction == FROM_RIGHT) {
+            bar.position = ccp(winSize.width + (bar.contentSize.width / 2),  bar.contentSize.height / 2);
+            dest = ccp(-bar.contentSize.width/2, bar.contentSize.height / 2);
+        } else {
+            bar.position = ccp(-bar.contentSize.width / 2, bar.contentSize.height / 2);
+            dest = ccp(winSize.width + (bar.contentSize.width / 2), bar.contentSize.height / 2);
+        }
+    } else { // IS_UPPER
+        bar = [CCSprite spriteWithFile:@"bar.png" rect:CGRectMake(0, 0, 10, range - randomHeight)];
+        if (direction == FROM_RIGHT) {
+            bar.position = ccp(winSize.width + (bar.contentSize.width / 2), randomHeight + THRESHOLD + _ball.contentSize.height + (bar.contentSize.height / 2));
+            NSLog(@"%f, height: %f", winSize.width + (bar.contentSize.width / 2), randomHeight + THRESHOLD + _ball.contentSize.height + (bar.contentSize.height / 2));
+            dest = ccp(-bar.contentSize.width/2, randomHeight + THRESHOLD + _ball.contentSize.height + (bar.contentSize.height / 2));
+        } else {
+            bar.position = ccp(-bar.contentSize.width / 2, randomHeight + THRESHOLD + _ball.contentSize.height + (bar.contentSize.height / 2));
+            dest = ccp(winSize.width + (bar.contentSize.width / 2), randomHeight + THRESHOLD + _ball.contentSize.height + (bar.contentSize.height / 2));
+        }
     }
     [self addChild:bar];
     
-    int minDuration = 2.0;
-    int maxDuration = 4.0;
-    int rangeDuration = maxDuration - minDuration;
-    int actualDuration = (arc4random() % rangeDuration) + minDuration;
-    id actionMove = [CCMoveTo actionWithDuration:actualDuration
-                                        position:dest];
+    id actionMove = [CCMoveTo actionWithDuration:[level getDuration] position:dest];
     id actionMoveDone = [CCCallFuncN actionWithTarget:self
                                              selector:@selector(spriteMoveFinished:)];
     [bar runAction:[CCSequence actions:actionMove, actionMoveDone, nil]];
@@ -171,6 +189,7 @@
     delete _world;
     _body = NULL;
     _world = NULL;
+    [level release];
     [super dealloc];
 }
 
