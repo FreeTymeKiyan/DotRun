@@ -31,6 +31,7 @@
         
         _ball = [CCSprite spriteWithFile:@"Ball.jpg" rect:CGRectMake(0, 0, 26, 26)];
         _ball.position = ccp(winSize.width / 2, winSize.height / 2);
+        _ball.tag = 0;
         [self addChild:_ball];
 //        NSLog(@"%f, %f", winSize.width / 2, winSize.height / 2);
         
@@ -43,21 +44,6 @@
         uint32 flags = 0;
         flags += b2Draw::e_shapeBit;
         _debugDraw->SetFlags(flags);
-        
-        b2BodyDef groundBodyDef;
-        groundBodyDef.position.Set(0,0);
-        b2Body *groundBody = _world->CreateBody(&groundBodyDef);
-        b2EdgeShape groundBox;
-        b2FixtureDef boxShapeDef;
-        boxShapeDef.shape =&groundBox;
-        groundBox.Set(b2Vec2(0,0), b2Vec2(winSize.width/PTM_RATIO, 0));
-        groundBody->CreateFixture(&boxShapeDef);
-        groundBox.Set(b2Vec2(0,0), b2Vec2(0, winSize.height/PTM_RATIO));
-        groundBody->CreateFixture(&boxShapeDef);
-        groundBox.Set(b2Vec2(0, winSize.height/PTM_RATIO), b2Vec2(winSize.width/PTM_RATIO, winSize.height / PTM_RATIO));
-        groundBody->CreateFixture(&boxShapeDef);
-        groundBox.Set(b2Vec2(winSize.width/PTM_RATIO, winSize.height/PTM_RATIO), b2Vec2(winSize.width / PTM_RATIO, 0));
-        groundBody->CreateFixture(&boxShapeDef);
         
         // Create ball body and shape
         b2BodyDef ballBodyDef;
@@ -95,6 +81,26 @@
     [self generateBar:IS_UPPER direction:FROM_RIGHT height:randomHeight];
 }
 
+-(void) spriteMoveFinished:(id)sender {
+    CCSprite *sprite = (CCSprite *)sender;
+    
+    b2Body *spriteBody = NULL;
+    for(b2Body *b = _world->GetBodyList(); b; b=b->GetNext()) {
+        if (b->GetUserData() != NULL) {
+            CCSprite *curSprite = (CCSprite *)b->GetUserData();
+            if (sprite == curSprite) {
+                spriteBody = b;
+                break;
+            }
+        }
+    }
+    if (spriteBody != NULL) {
+        _world->DestroyBody(spriteBody);
+    }
+    
+    [self removeChild:sprite cleanup:YES];
+}
+
 -(void) generateBar : (int) position direction : (int) direction height: (int) randomHeight {
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     int minY = 0;
@@ -123,17 +129,32 @@
             dest = ccp(winSize.width + (bar.contentSize.width / 2), randomHeight + THRESHOLD + _ball.contentSize.height + (bar.contentSize.height / 2));
         }
     }
+    bar.tag = 1;
     [self addChild:bar];
+    
+    //创建一个刚体的定义，并将其设置为动态刚体
+    b2BodyDef bodyDef;
+    bodyDef.type = b2_dynamicBody;
+    bodyDef.position.Set(bar.position.x / PTM_RATIO, bar.position.y / PTM_RATIO);
+    bodyDef.userData = bar;
+    b2Body* body = _world->CreateBody(&bodyDef);
+    
+    // 定义一个盒子形状，并将其复制给body fixture
+    b2PolygonShape  dynamicBox;
+    dynamicBox.SetAsBox(bar.contentSize.width / PTM_RATIO * 0.5f, bar.contentSize.height / PTM_RATIO * 0.5f);
+    
+    b2FixtureDef fixtureDef;
+    fixtureDef.shape = &dynamicBox;
+    fixtureDef.density = 1.0f;
+    fixtureDef.friction = 0.0f;
+    fixtureDef.restitution = 0.0f;
+    fixtureDef.isSensor = YES;
+    body->CreateFixture(&fixtureDef);
     
     id actionMove = [CCMoveTo actionWithDuration:[level getDuration] position:dest];
     id actionMoveDone = [CCCallFuncN actionWithTarget:self
                                              selector:@selector(spriteMoveFinished:)];
     [bar runAction:[CCSequence actions:actionMove, actionMoveDone, nil]];
-}
-
--(void) spriteMoveFinished:(id)sender {
-    CCSprite *sprite = (CCSprite *)sender;
-    [self removeChild:sprite cleanup:YES];
 }
 
 -(void) update:(ccTime) delta {
@@ -151,15 +172,14 @@
     }
     _ball.position = pos;
     
-    _world->Step(0.03, 10, 10);
-    for(b2Body *b = _world->GetBodyList(); b; b=b->GetNext()) {
+    _world->Step(delta, 10, 10);
+    for (b2Body *b = _world->GetBodyList(); b; b=b->GetNext()) {
         if (b->GetUserData() != NULL) {
             CCSprite *sprite = (CCSprite *)b->GetUserData();
-            //ballData.position = ccp(b->GetPosition().x * PTM_RATIO,
-            //                                    b->GetPosition().y * PTM_RATIO);
-            //ballData.rotation =-1* CC_RADIANS_TO_DEGREES(b->GetAngle());
-            b->SetTransform(b2Vec2(sprite.position.x, sprite.position.y), b->GetAngle());
-        } 
+            b2Vec2 b2Position = b2Vec2(sprite.position.x / PTM_RATIO, sprite.position.y / PTM_RATIO);
+            float32 b2Angle = -1 * CC_DEGREES_TO_RADIANS(sprite.rotation);
+            b->SetTransform(b2Position, b2Angle);
+        }
     }
 }
 
