@@ -9,6 +9,7 @@
 #import "cocos2d.h"
 #import "Box2D.h"
 #import "Level.h"
+#import "GLES-Render.h"
 
 @interface HelloWorldLayer : CCLayer {
     b2World *_world;
@@ -16,6 +17,7 @@
     CCSprite *_ball;
     CGPoint posChange;
     Level *level;
+    GLESDebugDraw *_debugDraw;
 }
 
 +(id) scene;
