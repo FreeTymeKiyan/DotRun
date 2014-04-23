@@ -13,7 +13,7 @@
 #define FROM_LEFT 1
 #define IS_UPPER 0
 #define IS_LOWER 1
-#define THRESHOLD 10
+#define THRESHOLD 20
 
 @implementation HelloWorldLayer
 
@@ -67,6 +67,11 @@
         _body->CreateFixture(&ballShapeDef);
         
         level = [[Level alloc] init];
+        
+        scoreLabel = [CCLabelTTF labelWithString:@"0" fontName:@"Marker Felt" fontSize:32];
+        scoreLabel.position = ccp(scoreLabel.contentSize.width / 2, scoreLabel.contentSize.height / 2);
+        [self addChild: scoreLabel];
+        
         [self schedule:@selector(update:)];
         [self schedule:@selector(gameLogic:) interval:[level getInterval]];
     }
@@ -196,9 +201,26 @@
             CCSprite* b = (CCSprite *)bodyB->GetUserData();
             if(a.tag != b.tag) {
                 NSLog(@"%@", @"Game Over!!!");
+                [self gameOver];
             }
         }
     }
+    
+    [level setTotalTime:delta];
+    int currentTime = (int)[level getTotalTime];
+    if ([level getScore] < currentTime) {
+        [level setScore: currentTime];
+        [scoreLabel setString:[NSString stringWithFormat:@"%i", [level getScore]]];
+    }
+}
+
+-(void) gameOver {
+    // stop moving
+    // move to next scene
+//    CCScene* s = [GameoverScene scene];
+//    [[CCDirector sharedDirector] replaceScene:[GameoverScene scene]];
+//    [[CCDirector sharedDirector] pushScene:[GameoverScene sceneWithParam:[level getScore]]];
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[GameoverScene sceneWithParam: [level getScore]]]];
 }
 
 -(void) accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
@@ -213,8 +235,7 @@
 }
 
 
--(void) draw
-{
+-(void) draw {
     [super draw];
     ccGLEnableVertexAttribs( kCCVertexAttribFlag_Position );
     kmGLPushMatrix();

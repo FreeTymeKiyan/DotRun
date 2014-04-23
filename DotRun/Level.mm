@@ -14,6 +14,7 @@
     if (self = [super init]) {
         duration = 8;
         interval = 2;
+        score = 0;
     }
     return self;
 }
@@ -24,6 +25,22 @@
 
 -(int) getDuration {
     return duration;
+}
+
+-(int) getScore {
+    return score;
+}
+
+-(void) setScore: (int) a {
+    score = a;
+}
+
+-(int) getTotalTime {
+    return totalTime;
+}
+
+-(void) setTotalTime:(float)a {
+    totalTime += a;
 }
 
 -(void) upgrade {

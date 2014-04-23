@@ -11,11 +11,17 @@
 @interface Level : NSObject {
     int duration;
     int interval;
+    int score;
+    float totalTime;
 }
 
 -(id) init;
 -(int) getInterval;
 -(int) getDuration;
+-(int) getScore;
+-(void) setScore: (int) a;
+-(int) getTotalTime;
+-(void) setTotalTime: (float) a;
 -(void) upgrade;
 
 @end
