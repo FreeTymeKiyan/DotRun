@@ -39,6 +39,10 @@
         _world = new b2World(gravity);
         _world->SetAllowSleeping(true);
         
+        // set contact listener
+        _contactListener = new MyContactListener();
+        _world->SetContactListener(_contactListener);
+        
         _debugDraw = new GLESDebugDraw(PTM_RATIO);
         _world->SetDebugDraw(_debugDraw);
         uint32 flags = 0;
@@ -53,7 +57,7 @@
         _body = _world->CreateBody(&ballBodyDef);
         
         b2CircleShape circle;
-        circle.m_radius = 26.0 / PTM_RATIO;
+        circle.m_radius = 13.0 / PTM_RATIO;
         
         b2FixtureDef ballShapeDef;
         ballShapeDef.shape = &circle;
@@ -175,10 +179,24 @@
     _world->Step(delta, 10, 10);
     for (b2Body *b = _world->GetBodyList(); b; b=b->GetNext()) {
         if (b->GetUserData() != NULL) {
-            CCSprite *sprite = (CCSprite *)b->GetUserData();
+            CCSprite* sprite = (CCSprite *)b->GetUserData();
             b2Vec2 b2Position = b2Vec2(sprite.position.x / PTM_RATIO, sprite.position.y / PTM_RATIO);
             float32 b2Angle = -1 * CC_DEGREES_TO_RADIANS(sprite.rotation);
             b->SetTransform(b2Position, b2Angle);
+        }
+    }
+    
+    std::vector<MyContact>::iterator position;
+    for (position = _contactListener->_contacts.begin(); position != _contactListener->_contacts.end(); ++position) {
+        MyContact contact = *position;
+        b2Body *bodyA = contact.fixtureA->GetBody();
+        b2Body *bodyB = contact.fixtureB->GetBody();
+        if (bodyA->GetUserData() != NULL && bodyB->GetUserData() != NULL) {
+            CCSprite* a = (CCSprite *)bodyA->GetUserData();
+            CCSprite* b = (CCSprite *)bodyB->GetUserData();
+            if(a.tag != b.tag) {
+                NSLog(@"%@", @"Game Over!!!");
+            }
         }
     }
 }
@@ -210,6 +228,7 @@
     _body = NULL;
     _world = NULL;
     [level release];
+    delete _contactListener;
     [super dealloc];
 }
 

@@ -10,6 +10,7 @@
 #import "Box2D.h"
 #import "Level.h"
 #import "GLES-Render.h"
+#import "MyContactListener.h"
 
 @interface HelloWorldLayer : CCLayer {
     b2World *_world;
@@ -18,6 +19,7 @@
     CGPoint posChange;
     Level *level;
     GLESDebugDraw *_debugDraw;
+    MyContactListener *_contactListener;
 }
 
 +(id) scene;

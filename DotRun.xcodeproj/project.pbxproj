@@ -191,6 +191,7 @@
 		BB5B8E9519058D7E00FDD0A1 /* Level.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB5B8E9419058D7E00FDD0A1 /* Level.mm */; };
 		BB968D621903517200BDA634 /* Ball.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB968D611903517200BDA634 /* Ball.jpg */; };
 		BB968D6419036B8500BDA634 /* bar.png in Resources */ = {isa = PBXBuildFile; fileRef = BB968D6319036B8500BDA634 /* bar.png */; };
+		BBB491011907560100DFDBD3 /* MyContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = BBB491001907560000DFDBD3 /* MyContactListener.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -576,6 +577,8 @@
 		BB5B8E9419058D7E00FDD0A1 /* Level.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Level.mm; sourceTree = "<group>"; };
 		BB968D611903517200BDA634 /* Ball.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ball.jpg; sourceTree = "<group>"; };
 		BB968D6319036B8500BDA634 /* bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar.png; sourceTree = "<group>"; };
+		BBB490FF1907560000DFDBD3 /* MyContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyContactListener.h; sourceTree = "<group>"; };
+		BBB491001907560000DFDBD3 /* MyContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyContactListener.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -643,6 +646,8 @@
 				BB3AFB3C1903400500D53E0B /* IntroLayer.h */,
 				BB5B8E9319058D7E00FDD0A1 /* Level.h */,
 				BB5B8E9419058D7E00FDD0A1 /* Level.mm */,
+				BBB490FF1907560000DFDBD3 /* MyContactListener.h */,
+				BBB491001907560000DFDBD3 /* MyContactListener.mm */,
 				BB3AFB3D1903400500D53E0B /* IntroLayer.mm */,
 				BB3AFB3F1903400500D53E0B /* GLES-Render.h */,
 				BB3AFB401903400500D53E0B /* GLES-Render.mm */,
@@ -1360,6 +1365,7 @@
 				BB3AF9BF1903400300D53E0B /* CCScene.m in Sources */,
 				BB3AFB281903400500D53E0B /* b2WeldJoint.cpp in Sources */,
 				BB3AF93E1903400300D53E0B /* CCActionGrid3D.m in Sources */,
+				BBB491011907560100DFDBD3 /* MyContactListener.mm in Sources */,
 				BB3AFA871903400400D53E0B /* mat4stack.c in Sources */,
 				BB3AFAAC1903400400D53E0B /* b2CollidePolygon.cpp in Sources */,
 				BB3AFB161903400400D53E0B /* b2Joint.cpp in Sources */,
