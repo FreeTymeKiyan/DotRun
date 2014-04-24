@@ -11,7 +11,7 @@
 #import "Level.h"
 #import "GLES-Render.h"
 #import "MyContactListener.h"
-#import "GameoverScene.h"
+#import "GameoverLayer.h"
 
 @interface HelloWorldLayer : CCLayer {
     b2World *_world;

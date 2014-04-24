@@ -192,7 +192,8 @@
 		BB968D621903517200BDA634 /* Ball.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB968D611903517200BDA634 /* Ball.jpg */; };
 		BB968D6419036B8500BDA634 /* bar.png in Resources */ = {isa = PBXBuildFile; fileRef = BB968D6319036B8500BDA634 /* bar.png */; };
 		BBB491011907560100DFDBD3 /* MyContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = BBB491001907560000DFDBD3 /* MyContactListener.mm */; };
-		BBB4910419075B3100DFDBD3 /* GameoverScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = BBB4910319075B3100DFDBD3 /* GameoverScene.mm */; };
+		BBB4910419075B3100DFDBD3 /* GameoverLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BBB4910319075B3100DFDBD3 /* GameoverLayer.mm */; };
+		BBEA32771909C2CD006AA124 /* MainLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BBEA32761909C2CD006AA124 /* MainLayer.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -580,8 +581,10 @@
 		BB968D6319036B8500BDA634 /* bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar.png; sourceTree = "<group>"; };
 		BBB490FF1907560000DFDBD3 /* MyContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyContactListener.h; sourceTree = "<group>"; };
 		BBB491001907560000DFDBD3 /* MyContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyContactListener.mm; sourceTree = "<group>"; };
-		BBB4910219075B3100DFDBD3 /* GameoverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameoverScene.h; sourceTree = "<group>"; };
-		BBB4910319075B3100DFDBD3 /* GameoverScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameoverScene.mm; sourceTree = "<group>"; };
+		BBB4910219075B3100DFDBD3 /* GameoverLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameoverLayer.h; sourceTree = "<group>"; };
+		BBB4910319075B3100DFDBD3 /* GameoverLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameoverLayer.mm; sourceTree = "<group>"; };
+		BBEA32751909C2CD006AA124 /* MainLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainLayer.h; sourceTree = "<group>"; };
+		BBEA32761909C2CD006AA124 /* MainLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MainLayer.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -646,16 +649,18 @@
 				BB3AFB371903400500D53E0B /* AppDelegate.mm */,
 				BB3AFB391903400500D53E0B /* HelloWorldLayer.h */,
 				BB3AFB3A1903400500D53E0B /* HelloWorldLayer.mm */,
-				BB3AFB3C1903400500D53E0B /* IntroLayer.h */,
 				BB5B8E9319058D7E00FDD0A1 /* Level.h */,
 				BB5B8E9419058D7E00FDD0A1 /* Level.mm */,
 				BBB490FF1907560000DFDBD3 /* MyContactListener.h */,
 				BBB491001907560000DFDBD3 /* MyContactListener.mm */,
+				BB3AFB3C1903400500D53E0B /* IntroLayer.h */,
 				BB3AFB3D1903400500D53E0B /* IntroLayer.mm */,
 				BB3AFB3F1903400500D53E0B /* GLES-Render.h */,
+				BBEA32751909C2CD006AA124 /* MainLayer.h */,
+				BBEA32761909C2CD006AA124 /* MainLayer.mm */,
 				BB3AFB401903400500D53E0B /* GLES-Render.mm */,
-				BBB4910219075B3100DFDBD3 /* GameoverScene.h */,
-				BBB4910319075B3100DFDBD3 /* GameoverScene.mm */,
+				BBB4910219075B3100DFDBD3 /* GameoverLayer.h */,
+				BBB4910319075B3100DFDBD3 /* GameoverLayer.mm */,
 				BB3AF9131903400300D53E0B /* Resources */,
 				BB3AF92B1903400300D53E0B /* libs */,
 				BB3AFB321903400500D53E0B /* Supporting Files */,
@@ -1303,7 +1308,7 @@
 				BB3AFB2B1903400500D53E0B /* b2WheelJoint.cpp in Sources */,
 				BB3AF99D1903400300D53E0B /* CCNode+Debug.m in Sources */,
 				BB3AF9781903400300D53E0B /* ccFPSImages.m in Sources */,
-				BBB4910419075B3100DFDBD3 /* GameoverScene.mm in Sources */,
+				BBB4910419075B3100DFDBD3 /* GameoverLayer.mm in Sources */,
 				BB3AFAF41903400400D53E0B /* b2ChainAndPolygonContact.cpp in Sources */,
 				BB3AF9FE1903400400D53E0B /* CCTMXXMLParser.m in Sources */,
 				BB3AFAF11903400400D53E0B /* b2ChainAndCircleContact.cpp in Sources */,
@@ -1440,6 +1445,7 @@
 				BB3AF9941903400300D53E0B /* CCMenu.m in Sources */,
 				BB3AFA9D1903400400D53E0B /* vec4.c in Sources */,
 				BB3AFAB71903400400D53E0B /* b2TimeOfImpact.cpp in Sources */,
+				BBEA32771909C2CD006AA124 /* MainLayer.mm in Sources */,
 				BB3AF95F1903400300D53E0B /* CCCamera.m in Sources */,
 				BB3AF9591903400300D53E0B /* CCAnimationCache.m in Sources */,
 				BB3AF97B1903400300D53E0B /* CCGLProgram.m in Sources */,

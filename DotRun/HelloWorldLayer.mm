@@ -211,6 +211,7 @@
     if ([level getScore] < currentTime) {
         [level setScore: currentTime];
         [scoreLabel setString:[NSString stringWithFormat:@"%i", [level getScore]]];
+        scoreLabel.position = ccp([[CCDirector sharedDirector] winSize].width - scoreLabel.contentSize.width / 2, scoreLabel.contentSize.height / 2);
     }
 }
 
@@ -219,8 +220,8 @@
     [self unschedule:@selector(update:)];
     [self unschedule:@selector(gameLogic:)];
     // move to next scene
-    CCScene* s = [GameoverScene scene];
-    GameoverScene *layer = [GameoverScene node];
+    CCScene* s = [GameoverLayer scene];
+    GameoverLayer* layer = [GameoverLayer node];
     [layer setScore:[level getScore]];
     [s addChild:layer];
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:s]];
@@ -236,7 +237,6 @@
         posChange.x=-100;
     }
 }
-
 
 -(void) draw {
     [super draw];
