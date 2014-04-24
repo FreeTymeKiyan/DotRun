@@ -137,7 +137,7 @@
                   symbolName = "-[HelloWorldLayer generateBar:direction:height:]"
                   moduleName = "DotRun"
                   urlString = "file:///Users/Kiyan/Documents/MyProjects/iOS/DotRun/DotRun/HelloWorldLayer.mm"
-                  timestampString = "419918282.91129"
+                  timestampString = "420047406.234291"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "138"
@@ -151,7 +151,7 @@
                   symbolName = "-[HelloWorldLayer generateBar:direction:height:]"
                   moduleName = "DotRun"
                   urlString = "file:///Users/Kiyan/Documents/MyProjects/iOS/DotRun/DotRun/HelloWorldLayer.mm"
-                  timestampString = "419918283.819717"
+                  timestampString = "420047407.174193"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "138"
@@ -183,7 +183,7 @@
                   symbolName = "-[HelloWorldLayer generateBar:direction:height:]"
                   moduleName = "DotRun"
                   urlString = "file:///Users/Kiyan/Documents/MyProjects/iOS/DotRun/DotRun/HelloWorldLayer.mm"
-                  timestampString = "419918282.912576"
+                  timestampString = "420047406.234744"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "130"
@@ -197,7 +197,7 @@
                   symbolName = "-[HelloWorldLayer generateBar:direction:height:]"
                   moduleName = "DotRun"
                   urlString = "file:///Users/Kiyan/Documents/MyProjects/iOS/DotRun/DotRun/HelloWorldLayer.mm"
-                  timestampString = "419918283.820205"
+                  timestampString = "420047407.174411"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "130"
@@ -229,7 +229,7 @@
                   symbolName = "-[HelloWorldLayer generateBar:direction:height:]"
                   moduleName = "DotRun"
                   urlString = "file:///Users/Kiyan/Documents/MyProjects/iOS/DotRun/DotRun/HelloWorldLayer.mm"
-                  timestampString = "419918282.913556"
+                  timestampString = "420047406.235208"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "145"
@@ -243,7 +243,7 @@
                   symbolName = "-[HelloWorldLayer generateBar:direction:height:]"
                   moduleName = "DotRun"
                   urlString = "file:///Users/Kiyan/Documents/MyProjects/iOS/DotRun/DotRun/HelloWorldLayer.mm"
-                  timestampString = "419918283.8204"
+                  timestampString = "420047407.174696"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "145"
@@ -291,12 +291,12 @@
                   symbolName = "-[HelloWorldLayer init]"
                   moduleName = "DotRun"
                   urlString = "file:///Users/Kiyan/Documents/MyProjects/iOS/DotRun/DotRun/HelloWorldLayer.mm"
-                  timestampString = "419918283.820971"
+                  timestampString = "420047406.236164"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "77"
                   endingLineNumber = "77"
-                  offsetFromSymbolStart = "1824">
+                  offsetFromSymbolStart = "1846">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -305,12 +305,40 @@
                   symbolName = "-[HelloWorldLayer init]"
                   moduleName = "DotRun"
                   urlString = "file:///Users/Kiyan/Documents/MyProjects/iOS/DotRun/DotRun/HelloWorldLayer.mm"
-                  timestampString = "419918283.821393"
+                  timestampString = "420047406.236355"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "77"
                   endingLineNumber = "77"
-                  offsetFromSymbolStart = "1830">
+                  offsetFromSymbolStart = "1852">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[HelloWorldLayer init]"
+                  moduleName = "DotRun"
+                  urlString = "file:///Users/Kiyan/Documents/MyProjects/iOS/DotRun/DotRun/HelloWorldLayer.mm"
+                  timestampString = "420047407.175304"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "1842">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[HelloWorldLayer init]"
+                  moduleName = "DotRun"
+                  urlString = "file:///Users/Kiyan/Documents/MyProjects/iOS/DotRun/DotRun/HelloWorldLayer.mm"
+                  timestampString = "420047407.175781"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "1848">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -401,7 +429,7 @@
                   symbolName = "-[HelloWorldLayer generateBar:direction:height:]"
                   moduleName = "DotRun"
                   urlString = "file:///Users/Kiyan/Documents/MyProjects/iOS/DotRun/DotRun/HelloWorldLayer.mm"
-                  timestampString = "419918282.916323"
+                  timestampString = "420047406.237041"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "147"
@@ -415,7 +443,7 @@
                   symbolName = "-[HelloWorldLayer generateBar:direction:height:]"
                   moduleName = "DotRun"
                   urlString = "file:///Users/Kiyan/Documents/MyProjects/iOS/DotRun/DotRun/HelloWorldLayer.mm"
-                  timestampString = "419918283.821753"
+                  timestampString = "420047407.176043"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "147"
@@ -453,7 +481,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "16"
             endingLineNumber = "16"
-            landmarkName = "+sceneWithParam:"
+            landmarkName = "+scene"
             landmarkType = "4">
          </BreakpointContent>
       </BreakpointProxy>
@@ -480,12 +508,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DotRun/HelloWorldLayer.mm"
-            timestampString = "419918499.471845"
+            timestampString = "420047770.267294"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
             landmarkName = "-gameOver"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DotRun/GameoverScene.mm"
+            timestampString = "420047406.197099"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "-setScore:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DotRun/GameoverScene.mm"
+            timestampString = "420048303.226606"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "-dealloc"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -10,9 +10,9 @@
 #import "cocos2d.h"
 
 @interface GameoverScene : CCLayer {
-    int score;
+    CCLabelTTF* scoreLable;
 }
 
-+(CCScene *)sceneWithParam: (int) param;
++(CCScene *)scene;
 -(void) setScore: (int) s;
 @end

@@ -43,11 +43,11 @@
         _contactListener = new MyContactListener();
         _world->SetContactListener(_contactListener);
         
-        _debugDraw = new GLESDebugDraw(PTM_RATIO);
-        _world->SetDebugDraw(_debugDraw);
-        uint32 flags = 0;
-        flags += b2Draw::e_shapeBit;
-        _debugDraw->SetFlags(flags);
+//        _debugDraw = new GLESDebugDraw(PTM_RATIO);
+//        _world->SetDebugDraw(_debugDraw);
+//        uint32 flags = 0;
+//        flags += b2Draw::e_shapeBit;
+//        _debugDraw->SetFlags(flags);
         
         // Create ball body and shape
         b2BodyDef ballBodyDef;
@@ -69,7 +69,7 @@
         level = [[Level alloc] init];
         
         scoreLabel = [CCLabelTTF labelWithString:@"0" fontName:@"Marker Felt" fontSize:32];
-        scoreLabel.position = ccp(scoreLabel.contentSize.width / 2, scoreLabel.contentSize.height / 2);
+        scoreLabel.position = ccp(winSize.width - scoreLabel.contentSize.width / 2, scoreLabel.contentSize.height / 2);
         [self addChild: scoreLabel];
         
         [self schedule:@selector(update:)];
@@ -216,11 +216,14 @@
 
 -(void) gameOver {
     // stop moving
+    [self unschedule:@selector(update:)];
+    [self unschedule:@selector(gameLogic:)];
     // move to next scene
-//    CCScene* s = [GameoverScene scene];
-//    [[CCDirector sharedDirector] replaceScene:[GameoverScene scene]];
-//    [[CCDirector sharedDirector] pushScene:[GameoverScene sceneWithParam:[level getScore]]];
-    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[GameoverScene sceneWithParam: [level getScore]]]];
+    CCScene* s = [GameoverScene scene];
+    GameoverScene *layer = [GameoverScene node];
+    [layer setScore:[level getScore]];
+    [s addChild:layer];
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:s]];
 }
 
 -(void) accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
