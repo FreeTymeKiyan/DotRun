@@ -26,6 +26,8 @@
 
 -(id) init {
     if (self = [super init]) {
+        [self setTouchEnabled:YES];
+        
         CGSize s = [CCDirector sharedDirector].winSize;
         
         CCLabelTTF* label = [CCLabelTTF labelWithString:@"Game Over" fontName:@"Marker Felt" fontSize:64];
@@ -39,9 +41,13 @@
     return self;
 }
 
+-(void) ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[HelloWorldLayer scene]]];
+}
+
 - (void)dealloc {
-    [scoreLable release];
-    scoreLable = nil;
+//    [scoreLable release];
+//    scoreLable = nil;
     [super dealloc];
 }
 

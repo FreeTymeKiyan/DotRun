@@ -249,8 +249,8 @@
 
 -(void) dealloc {
     delete _world;
-    _body = NULL;
-    _world = NULL;
+    _body = nil;
+    _world = nil;
     [level release];
     delete _contactListener;
     [super dealloc];
