@@ -13,7 +13,8 @@
 #define FROM_LEFT 1
 #define IS_UPPER 0
 #define IS_LOWER 1
-#define THRESHOLD 20
+#define THRESHOLD 26
+#define PATTERN_NO 4
 
 @implementation HelloWorldLayer
 
@@ -80,15 +81,30 @@
 }
 
 -(void) gameLogic:(ccTime)dt {
-    [self generatePair: 0];
+    int pattern = arc4random() % PATTERN_NO;
+    [self generatePattern: pattern];
 }
 
--(void) generatePair: (int) pattern {
+-(void) generatePattern: (int) pattern {
     int randomHeight = abs(arc4random());
-//    [self generateBar:IS_UPPER direction:FROM_LEFT height:randomHeight];
-    [self generateBar:IS_LOWER direction:FROM_LEFT height:randomHeight];
-//    [self generateBar:IS_LOWER direction:FROM_RIGHT height:randomHeight];
-    [self generateBar:IS_UPPER direction:FROM_RIGHT height:randomHeight];
+    switch (pattern) {
+        case 0:
+            [self generateBar:IS_LOWER direction:FROM_LEFT height:randomHeight];
+            [self generateBar:IS_UPPER direction:FROM_RIGHT height:randomHeight];
+            break;
+        case 1:
+            [self generateBar:IS_UPPER direction:FROM_LEFT height:randomHeight];
+            [self generateBar:IS_LOWER direction:FROM_RIGHT height:randomHeight];
+            break;
+        case 2:
+            [self generateBar:IS_LOWER direction:FROM_LEFT height:randomHeight];
+            break;
+        case 3:
+            [self generateBar:IS_UPPER direction:FROM_RIGHT height:randomHeight];
+            break;
+        default:
+            break;
+    }
 }
 
 -(void) spriteMoveFinished:(id)sender {
@@ -217,6 +233,7 @@
 }
 
 -(void) gameOver {
+    [self vibrate];
     // stop moving
     [self unschedule:@selector(update:)];
     [self unschedule:@selector(gameLogic:)];
@@ -224,8 +241,8 @@
     if ([[NSUserDefaults standardUserDefaults] integerForKey:@"BestScore"] < [level getScore]) {
         [[NSUserDefaults standardUserDefaults] setInteger:[level getScore] forKey:@"BestScore"];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isNewBest"];
-    }
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isNewBest"];
+    } else
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isNewBest"];
     // move to next scene
     CCScene* s = [GameoverLayer scene];
     GameoverLayer* layer = [GameoverLayer node];
@@ -258,6 +275,10 @@
 //    int x = [[NSUserDefaults standardUserDefaults] integerForKey:@"BestScore"];
 //    NSLog(@"best score: %i", x);
     return [[NSUserDefaults standardUserDefaults] integerForKey:@"BestScore"];
+}
+
+- (void)vibrate {
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
 }
 
 -(void) dealloc {

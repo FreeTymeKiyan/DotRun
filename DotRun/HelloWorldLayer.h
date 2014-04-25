@@ -12,6 +12,7 @@
 #import "GLES-Render.h"
 #import "MyContactListener.h"
 #import "GameoverLayer.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface HelloWorldLayer : CCLayerColor {
     b2World *_world;
