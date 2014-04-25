@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB114A99190A06AB007C3C90 /* Ball_red.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB114A93190A06AB007C3C90 /* Ball_red.jpg */; };
+		BB114A9A190A06AB007C3C90 /* Ball_red@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB114A94190A06AB007C3C90 /* Ball_red@2x.jpg */; };
+		BB114A9B190A06AB007C3C90 /* Bar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB114A95190A06AB007C3C90 /* Bar.jpg */; };
 		BB114A9C190A06AB007C3C90 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = BB114A96190A06AB007C3C90 /* Icon-72.png */; };
 		BB114A9D190A06AB007C3C90 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB114A97190A06AB007C3C90 /* Icon-Small@2x.png */; };
 		BB114A9E190A06AB007C3C90 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BB114A98190A06AB007C3C90 /* Icon.png */; };
-		BB114AA6190A0E05007C3C90 /* Ball_red.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB114AA5190A0E05007C3C90 /* Ball_red.jpg */; };
 		BB3AF8FF1903400300D53E0B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3AF8FE1903400300D53E0B /* QuartzCore.framework */; };
 		BB3AF9011903400300D53E0B /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3AF9001903400300D53E0B /* OpenGLES.framework */; };
 		BB3AF9031903400300D53E0B /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3AF9021903400300D53E0B /* OpenAL.framework */; };
@@ -196,10 +198,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BB114A93190A06AB007C3C90 /* Ball_red.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Ball_red.jpg; path = Resources/Ball_red.jpg; sourceTree = "<group>"; };
+		BB114A94190A06AB007C3C90 /* Ball_red@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Ball_red@2x.jpg"; path = "Resources/Ball_red@2x.jpg"; sourceTree = "<group>"; };
+		BB114A95190A06AB007C3C90 /* Bar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Bar.jpg; path = Resources/Bar.jpg; sourceTree = "<group>"; };
 		BB114A96190A06AB007C3C90 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "Resources/Icon-72.png"; sourceTree = "<group>"; };
 		BB114A97190A06AB007C3C90 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "Resources/Icon-Small@2x.png"; sourceTree = "<group>"; };
 		BB114A98190A06AB007C3C90 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Resources/Icon.png; sourceTree = "<group>"; };
-		BB114AA5190A0E05007C3C90 /* Ball_red.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Ball_red.jpg; path = Resources/Ball_red.jpg; sourceTree = "<group>"; };
 		BB3AF8FB1903400300D53E0B /* DotRun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DotRun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB3AF8FE1903400300D53E0B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BB3AF9001903400300D53E0B /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -672,7 +676,9 @@
 				BB3AF9141903400300D53E0B /* Default.png */,
 				BB3AF9161903400300D53E0B /* Default@2x.png */,
 				BB3AF9181903400300D53E0B /* Default-568h@2x.png */,
-				BB114AA5190A0E05007C3C90 /* Ball_red.jpg */,
+				BB114A93190A06AB007C3C90 /* Ball_red.jpg */,
+				BB114A94190A06AB007C3C90 /* Ball_red@2x.jpg */,
+				BB114A95190A06AB007C3C90 /* Bar.jpg */,
 				BB114A96190A06AB007C3C90 /* Icon-72.png */,
 				BB114A97190A06AB007C3C90 /* Icon-Small@2x.png */,
 				BB114A98190A06AB007C3C90 /* Icon.png */,
@@ -1264,15 +1270,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB3AFA831903400400D53E0B /* ChangeLog in Resources */,
+				BB114A9A190A06AB007C3C90 /* Ball_red@2x.jpg in Resources */,
 				BB3AF9171903400300D53E0B /* Default@2x.png in Resources */,
 				BB114A9D190A06AB007C3C90 /* Icon-Small@2x.png in Resources */,
 				BB114A9E190A06AB007C3C90 /* Icon.png in Resources */,
 				BB3AF9211903400300D53E0B /* Icon-Small.png in Resources */,
+				BB114A99190A06AB007C3C90 /* Ball_red.jpg in Resources */,
 				BB114A9C190A06AB007C3C90 /* Icon-72.png in Resources */,
 				BB3AF9151903400300D53E0B /* Default.png in Resources */,
 				BB3AF91F1903400300D53E0B /* Icon-Small-50.png in Resources */,
-				BB114AA6190A0E05007C3C90 /* Ball_red.jpg in Resources */,
 				BB3AF92A1903400300D53E0B /* iTunesArtwork in Resources */,
+				BB114A9B190A06AB007C3C90 /* Bar.jpg in Resources */,
 				BB3AFB431903400500D53E0B /* blocks.png in Resources */,
 				BB3AF91B1903400300D53E0B /* Default-Landscape~ipad.png in Resources */,
 				BB3AF9191903400300D53E0B /* Default-568h@2x.png in Resources */,
