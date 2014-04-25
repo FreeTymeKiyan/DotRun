@@ -14,7 +14,7 @@
 #define IS_UPPER 0
 #define IS_LOWER 1
 #define THRESHOLD 26
-#define PATTERN_NO 4
+#define PATTERN_NO 6
 
 @implementation HelloWorldLayer
 
@@ -58,7 +58,7 @@
         _body = _world->CreateBody(&ballBodyDef);
         
         b2CircleShape circle;
-        circle.m_radius = 13.0 / PTM_RATIO;
+        circle.m_radius = 10.0 / PTM_RATIO;
         
         b2FixtureDef ballShapeDef;
         ballShapeDef.shape = &circle;
@@ -89,12 +89,12 @@
     int randomHeight = abs(arc4random());
     switch (pattern) {
         case 0:
-            [self generateBar:IS_LOWER direction:FROM_LEFT height:randomHeight];
-            [self generateBar:IS_UPPER direction:FROM_RIGHT height:randomHeight];
+            [self generatePair:IS_LOWER direction:FROM_LEFT height:randomHeight];
+            [self generatePair:IS_UPPER direction:FROM_RIGHT height:randomHeight];
             break;
         case 1:
-            [self generateBar:IS_UPPER direction:FROM_LEFT height:randomHeight];
-            [self generateBar:IS_LOWER direction:FROM_RIGHT height:randomHeight];
+            [self generatePair:IS_UPPER direction:FROM_LEFT height:randomHeight];
+            [self generatePair:IS_LOWER direction:FROM_RIGHT height:randomHeight];
             break;
         case 2:
             [self generateBar:IS_LOWER direction:FROM_LEFT height:randomHeight];
@@ -102,9 +102,16 @@
         case 3:
             [self generateBar:IS_UPPER direction:FROM_RIGHT height:randomHeight];
             break;
+        case 4:
+            [self generateBar:IS_UPPER direction:FROM_LEFT height:randomHeight];
+            break;
+        case 5:
+            [self generateBar:IS_LOWER direction:FROM_RIGHT height:randomHeight];
+            break;
         default:
             break;
     }
+    [self upgrade];
 }
 
 -(void) spriteMoveFinished:(id)sender {
@@ -127,10 +134,47 @@
     [self removeChild:sprite cleanup:YES];
 }
 
--(void) generateBar : (int) position direction : (int) direction height: (int) randomHeight {
+-(void) generateBar: (int) position direction: (int)direction height: (int) randomHeight {
     CGSize winSize = [[CCDirector sharedDirector] winSize];
-    int minY = 0;
-    int maxY = winSize.height - THRESHOLD - _ball.contentSize.height;;
+    int minY = winSize.height / 2;
+    int maxY = winSize.height * 2 / 3;
+    int range = maxY - minY;
+    randomHeight = randomHeight % range + minY;
+    CCSprite *bar = [CCSprite spriteWithFile:@"Bar.jpg" rect:CGRectMake(0, 0, 10, randomHeight)];
+    CGPoint dest;
+    if (position == IS_LOWER) {
+        if (direction == FROM_LEFT) {
+            [bar setPosition:ccp(-bar.contentSize.width / 2, bar.contentSize.height / 2)];
+            dest = ccp(winSize.width + bar.contentSize.width / 2, bar.contentSize.height / 2);
+        } else {
+            [bar setPosition:ccp(winSize.width + bar.contentSize.width / 2, bar.contentSize.height / 2)];
+            dest = ccp(-bar.contentSize.width / 2, bar.contentSize.height / 2);
+        }
+    } else {
+        if (direction == FROM_LEFT) {
+            [bar setPosition:ccp(-bar.contentSize.width / 2, winSize.height - bar.contentSize.height / 2)];
+            dest = ccp(winSize.width + bar.contentSize.width / 2, winSize.height - bar.contentSize.height / 2);
+        } else {
+            [bar setPosition:ccp(winSize.width + bar.contentSize.width / 2, winSize.height - bar.contentSize.height / 2)];
+            dest = ccp(-bar.contentSize.width / 2, winSize.height - bar.contentSize.height / 2);
+        }
+    }
+    bar.tag = 1;
+    [self addChild:bar];
+
+    [self createBody:bar];
+    
+    id actionMove = [CCMoveTo actionWithDuration:[level getDuration] position:dest];
+//    NSLog(@"duration: %f", [level getDuration]);
+    id actionMoveDone = [CCCallFuncN actionWithTarget:self
+                                             selector:@selector(spriteMoveFinished:)];
+    [bar runAction:[CCSequence actions:actionMove, actionMoveDone, nil]];
+}
+
+-(void) generatePair : (int) position direction : (int) direction height: (int) randomHeight {
+    CGSize winSize = [[CCDirector sharedDirector] winSize];
+    int minY = THRESHOLD + _ball.contentSize.height;
+    int maxY = winSize.height - THRESHOLD - _ball.contentSize.height;
     int range = maxY - minY;
     randomHeight = randomHeight % range + minY;
     CCSprite *bar;
@@ -145,7 +189,7 @@
             dest = ccp(winSize.width + (bar.contentSize.width / 2), bar.contentSize.height / 2);
         }
     } else { // IS_UPPER
-        bar = [CCSprite spriteWithFile:@"Bar.jpg" rect:CGRectMake(0, 0, 10, range - randomHeight)];
+        bar = [CCSprite spriteWithFile:@"Bar.jpg" rect:CGRectMake(0, 0, 10, maxY - randomHeight)];
         if (direction == FROM_RIGHT) {
             bar.position = ccp(winSize.width + (bar.contentSize.width / 2), randomHeight + THRESHOLD + _ball.contentSize.height + (bar.contentSize.height / 2));
             NSLog(@"%f, height: %f", winSize.width + (bar.contentSize.width / 2), randomHeight + THRESHOLD + _ball.contentSize.height + (bar.contentSize.height / 2));
@@ -158,6 +202,16 @@
     bar.tag = 1;
     [self addChild:bar];
     
+    [self createBody:bar];
+    
+    id actionMove = [CCMoveTo actionWithDuration:[level getDuration] position:dest];
+//    NSLog(@"duration: %f", [level getDuration]);
+    id actionMoveDone = [CCCallFuncN actionWithTarget:self
+                                             selector:@selector(spriteMoveFinished:)];
+    [bar runAction:[CCSequence actions:actionMove, actionMoveDone, nil]];
+}
+
+-(void) createBody: (CCSprite*) bar {
     //创建一个刚体的定义，并将其设置为动态刚体
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
@@ -176,11 +230,7 @@
     fixtureDef.restitution = 0.0f;
     fixtureDef.isSensor = YES;
     body->CreateFixture(&fixtureDef);
-    
-    id actionMove = [CCMoveTo actionWithDuration:[level getDuration] position:dest];
-    id actionMoveDone = [CCCallFuncN actionWithTarget:self
-                                             selector:@selector(spriteMoveFinished:)];
-    [bar runAction:[CCSequence actions:actionMove, actionMoveDone, nil]];
+
 }
 
 -(void) update:(ccTime) delta {
@@ -277,8 +327,14 @@
     return [[NSUserDefaults standardUserDefaults] integerForKey:@"BestScore"];
 }
 
-- (void)vibrate {
+-(void) vibrate {
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+}
+
+-(void) upgrade {
+    [level upgrade];
+    [self unschedule:@selector(gameLogic:)];
+    [self schedule:@selector(gameLogic:) interval:[level getInterval]];
 }
 
 -(void) dealloc {

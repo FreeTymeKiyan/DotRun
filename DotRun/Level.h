@@ -9,15 +9,15 @@
 #import <Foundation/Foundation.h>
 
 @interface Level : NSObject {
-    int duration;
-    int interval;
+    float duration;
+    float interval;
     int score;
     float totalTime;
 }
 
 -(id) init;
--(int) getInterval;
--(int) getDuration;
+-(float) getInterval;
+-(float) getDuration;
 -(int) getScore;
 -(void) setScore: (int) a;
 -(int) getTotalTime;
