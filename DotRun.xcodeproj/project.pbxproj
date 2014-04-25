@@ -18,7 +18,6 @@
 		BB3AF9031903400300D53E0B /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3AF9021903400300D53E0B /* OpenAL.framework */; };
 		BB3AF9051903400300D53E0B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3AF9041903400300D53E0B /* AudioToolbox.framework */; };
 		BB3AF9071903400300D53E0B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3AF9061903400300D53E0B /* AVFoundation.framework */; };
-		BB3AF9091903400300D53E0B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3AF9081903400300D53E0B /* UIKit.framework */; };
 		BB3AF90B1903400300D53E0B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3AF90A1903400300D53E0B /* Foundation.framework */; };
 		BB3AF90D1903400300D53E0B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3AF90C1903400300D53E0B /* CoreGraphics.framework */; };
 		BB3AF90F1903400300D53E0B /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3AF90E1903400300D53E0B /* CoreText.framework */; };
@@ -192,6 +191,7 @@
 		BB3AFB411903400500D53E0B /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB3AFB401903400500D53E0B /* GLES-Render.mm */; };
 		BB3AFB431903400500D53E0B /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = BB3AFB421903400500D53E0B /* blocks.png */; };
 		BB5B8E9519058D7E00FDD0A1 /* Level.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB5B8E9419058D7E00FDD0A1 /* Level.mm */; };
+		BB998A33190A22820072C836 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3AF9081903400300D53E0B /* UIKit.framework */; };
 		BBB491011907560100DFDBD3 /* MyContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = BBB491001907560000DFDBD3 /* MyContactListener.mm */; };
 		BBB4910419075B3100DFDBD3 /* GameoverLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BBB4910319075B3100DFDBD3 /* GameoverLayer.mm */; };
 		BBEA32771909C2CD006AA124 /* MainLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BBEA32761909C2CD006AA124 /* MainLayer.mm */; };
@@ -594,8 +594,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB998A33190A22820072C836 /* UIKit.framework in Frameworks */,
+				BB3AF9111903400300D53E0B /* GameKit.framework in Frameworks */,
 				BB3AF9031903400300D53E0B /* OpenAL.framework in Frameworks */,
-				BB3AF9091903400300D53E0B /* UIKit.framework in Frameworks */,
 				BB3AF8FF1903400300D53E0B /* QuartzCore.framework in Frameworks */,
 				BB3AF9071903400300D53E0B /* AVFoundation.framework in Frameworks */,
 				BB3AF90D1903400300D53E0B /* CoreGraphics.framework in Frameworks */,
@@ -603,7 +604,6 @@
 				BB3AF9011903400300D53E0B /* OpenGLES.framework in Frameworks */,
 				BB3AF90B1903400300D53E0B /* Foundation.framework in Frameworks */,
 				BB3AF9051903400300D53E0B /* AudioToolbox.framework in Frameworks */,
-				BB3AF9111903400300D53E0B /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -651,10 +651,10 @@
 				BB3AFB371903400500D53E0B /* AppDelegate.mm */,
 				BB5B8E9319058D7E00FDD0A1 /* Level.h */,
 				BB5B8E9419058D7E00FDD0A1 /* Level.mm */,
-				BB3AFB3C1903400500D53E0B /* IntroLayer.h */,
-				BB3AFB3D1903400500D53E0B /* IntroLayer.mm */,
 				BB3AFB3F1903400500D53E0B /* GLES-Render.h */,
 				BB3AFB401903400500D53E0B /* GLES-Render.mm */,
+				BB3AFB3C1903400500D53E0B /* IntroLayer.h */,
+				BB3AFB3D1903400500D53E0B /* IntroLayer.mm */,
 				BBEA32751909C2CD006AA124 /* MainLayer.h */,
 				BBEA32761909C2CD006AA124 /* MainLayer.mm */,
 				BB3AFB391903400500D53E0B /* HelloWorldLayer.h */,

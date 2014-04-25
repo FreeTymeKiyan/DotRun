@@ -1,5 +1,5 @@
 //
-//  MyCocos2DClass.mm
+//  MainLayer.mm
 //  DotRun
 //
 //  Created by Kiyan Liu on 4/24/14.
@@ -46,12 +46,14 @@
         [menu alignItemsHorizontallyWithPadding:40];
         [menu setPosition:ccp(s.width / 2, s.height / 2 - titleLabel.contentSize.height / 2)];
         [self addChild:menu];
+        
+        [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
     }
     return self;
 }
 
--(void) onEnter {
-    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+-(void) dealloc {
+    [super dealloc];
 }
 
 @end

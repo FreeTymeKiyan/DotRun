@@ -1,5 +1,5 @@
 //
-//  MyCocos2DClass.mm
+//  GameoverLayer.mm
 //  DotRun
 //
 //  Created by Kiyan Liu on 4/22/14.
@@ -36,8 +36,9 @@
         NSString* bestStr;
         if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isNewBest"]) {
             bestStr = [NSString stringWithFormat:@"New Best: %i", bestScore];
+        } else {
+            bestStr = [NSString stringWithFormat:@"Best: %i", bestScore];
         }
-        bestStr = [NSString stringWithFormat:@"Best: %i", bestScore];
         CCLabelTTF* bestLabel = [CCLabelTTF labelWithString:bestStr fontName:@"Marker Felt" fontSize:28];
         [bestLabel setPosition:ccp(s.width / 2, s.height / 2)];
         [bestLabel setColor:ccBLACK];
