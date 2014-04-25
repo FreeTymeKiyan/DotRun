@@ -21,17 +21,31 @@
 }
 
 -(void) setScore: (int) s {
-    [scoreLable setString:[NSString stringWithFormat:@"Score: %i", s]];
+    [scoreLable setString:[NSString stringWithFormat:@"%i", s]];
+    CGSize size = [CCDirector sharedDirector].winSize;
+    [scoreLable setPosition:ccp(size.width / 2, scoreLable.position.y)];
 }
 
 -(id) init {
-    if (self = [super init]) {
+    if (self = [super initWithColor:ccc4(255,255,255,255)]) {
 //        [self setTouchEnabled:YES];
         
         CGSize s = [CCDirector sharedDirector].winSize;
         
-        scoreLable = [CCLabelTTF labelWithString:@"Score: 0" fontName:@"Marker Felt" fontSize:64];
-        scoreLable.position =  ccp(s.width / 2, s.height / 2 + scoreLable.contentSize.height / 2);
+        int bestScore = [[NSUserDefaults standardUserDefaults] integerForKey:@"BestScore"];
+        NSString* bestStr;
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isNewBest"]) {
+            bestStr = [NSString stringWithFormat:@"New Best: %i", bestScore];
+        }
+        bestStr = [NSString stringWithFormat:@"Best: %i", bestScore];
+        CCLabelTTF* bestLabel = [CCLabelTTF labelWithString:bestStr fontName:@"Marker Felt" fontSize:28];
+        [bestLabel setPosition:ccp(s.width / 2, s.height / 2)];
+        [bestLabel setColor:ccBLACK];
+        [self addChild: bestLabel];
+        
+        scoreLable = [CCLabelTTF labelWithString:@"0" fontName:@"Marker Felt" fontSize:64];
+        [scoreLable setPosition:ccp(s.width / 2, s.height / 2 + bestLabel.contentSize.height + scoreLable.contentSize.height / 2)];
+        [scoreLable setColor:ccBLACK];
         [self addChild: scoreLable];
         
         // Default font size will be 28 points.
@@ -42,18 +56,21 @@
             NSLog(@"Share Clicked");
 //            system share
         }];
+        [shareItem setColor:ccBLACK];
         CCMenuItem* replayItem = [CCMenuItemFont itemWithString:@"Replay" block:^(id sender) {
 //            NSLog(@"Replay Clicked");
             [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[HelloWorldLayer scene]]];
         }];
+        [replayItem setColor:ccBLACK];
         CCMenuItem* exitItem = [CCMenuItemFont itemWithString:@"Exit" block:^(id sender) {
 //            NSLog(@"exit Clicked");
 //            return to main scene
             [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[MainLayer scene]]];
         }];
+        [exitItem setColor:ccBLACK];
         CCMenu *menu = [CCMenu menuWithItems:shareItem, replayItem, exitItem, nil];
 		[menu alignItemsHorizontallyWithPadding:40];
-		[menu setPosition:ccp(s.width/2, s.height/2 - scoreLable.contentSize.height / 2)];
+		[menu setPosition:ccp(s.width/2, s.height/2 - bestLabel.contentSize.height - exitItem.contentSize.height / 2)];
 		
 		// Add the menu to the layer
 		[self addChild:menu];

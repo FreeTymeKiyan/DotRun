@@ -11,7 +11,7 @@
 #import "HelloWorldLayer.h"
 #import "MainLayer.h"
 
-@interface GameoverLayer : CCLayer {
+@interface GameoverLayer : CCLayerColor {
     CCLabelTTF* scoreLable;
 }
 

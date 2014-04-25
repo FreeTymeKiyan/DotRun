@@ -25,13 +25,13 @@
 }
 
 -(id) init {
-    if((self = [super init])) {
+    if((self = [super initWithColor:ccc4(255,255,255,255)])) {
         CGSize winSize = [CCDirector sharedDirector].winSize;
         [self setAccelerometerEnabled:YES];
         
-        _ball = [CCSprite spriteWithFile:@"Ball.jpg" rect:CGRectMake(0, 0, 26, 26)];
-        _ball.position = ccp(winSize.width / 2, winSize.height / 2);
-        _ball.tag = 0;
+        _ball = [CCSprite spriteWithFile:@"Ball_red.jpg" rect:CGRectMake(0, 0, 26, 26)];
+        [_ball setPosition:ccp(winSize.width / 2, winSize.height / 2)];
+        [_ball setTag:0];
         [self addChild:_ball];
 //        NSLog(@"%f, %f", winSize.width / 2, winSize.height / 2);
         
@@ -69,7 +69,8 @@
         level = [[Level alloc] init];
         
         scoreLabel = [CCLabelTTF labelWithString:@"0" fontName:@"Marker Felt" fontSize:32];
-        scoreLabel.position = ccp(winSize.width - scoreLabel.contentSize.width / 2, scoreLabel.contentSize.height / 2);
+        [scoreLabel setPosition:ccp(winSize.width - scoreLabel.contentSize.width / 2, scoreLabel.contentSize.height / 2)];
+        [scoreLabel setColor:ccBLACK];
         [self addChild: scoreLabel];
         
         [self schedule:@selector(update:)];
@@ -119,7 +120,7 @@
     CCSprite *bar;
     CGPoint dest;
     if (position == IS_LOWER) {
-        bar = [CCSprite spriteWithFile:@"bar.png" rect:CGRectMake(0, 0, 10, randomHeight)];
+        bar = [CCSprite spriteWithFile:@"Bar.jpg" rect:CGRectMake(0, 0, 10, randomHeight)];
         if (direction == FROM_RIGHT) {
             bar.position = ccp(winSize.width + (bar.contentSize.width / 2),  bar.contentSize.height / 2);
             dest = ccp(-bar.contentSize.width/2, bar.contentSize.height / 2);
@@ -128,7 +129,7 @@
             dest = ccp(winSize.width + (bar.contentSize.width / 2), bar.contentSize.height / 2);
         }
     } else { // IS_UPPER
-        bar = [CCSprite spriteWithFile:@"bar.png" rect:CGRectMake(0, 0, 10, range - randomHeight)];
+        bar = [CCSprite spriteWithFile:@"Bar.jpg" rect:CGRectMake(0, 0, 10, range - randomHeight)];
         if (direction == FROM_RIGHT) {
             bar.position = ccp(winSize.width + (bar.contentSize.width / 2), randomHeight + THRESHOLD + _ball.contentSize.height + (bar.contentSize.height / 2));
             NSLog(@"%f, height: %f", winSize.width + (bar.contentSize.width / 2), randomHeight + THRESHOLD + _ball.contentSize.height + (bar.contentSize.height / 2));
@@ -219,6 +220,12 @@
     // stop moving
     [self unschedule:@selector(update:)];
     [self unschedule:@selector(gameLogic:)];
+    
+    if ([[NSUserDefaults standardUserDefaults] integerForKey:@"BestScore"] < [level getScore]) {
+        [[NSUserDefaults standardUserDefaults] setInteger:[level getScore] forKey:@"BestScore"];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isNewBest"];
+    }
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isNewBest"];
     // move to next scene
     CCScene* s = [GameoverLayer scene];
     GameoverLayer* layer = [GameoverLayer node];
@@ -245,6 +252,12 @@
     //    kmGLScalef(CC_CONTENT_SCALE_FACTOR(), CC_CONTENT_SCALE_FACTOR(), 1);
     _world->DrawDebugData();
     kmGLPopMatrix();
+}
+
+-(int) bestScore {
+//    int x = [[NSUserDefaults standardUserDefaults] integerForKey:@"BestScore"];
+//    NSLog(@"best score: %i", x);
+    return [[NSUserDefaults standardUserDefaults] integerForKey:@"BestScore"];
 }
 
 -(void) dealloc {

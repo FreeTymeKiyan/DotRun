@@ -10,7 +10,7 @@
 #import "cocos2d.h"
 #import "HelloWorldLayer.h"
 
-@interface MainLayer : CCLayer {
+@interface MainLayer : CCLayerColor {
     
 }
 

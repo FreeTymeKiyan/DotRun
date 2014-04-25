@@ -13,7 +13,7 @@
 #import "MyContactListener.h"
 #import "GameoverLayer.h"
 
-@interface HelloWorldLayer : CCLayer {
+@interface HelloWorldLayer : CCLayerColor {
     b2World *_world;
     b2Body *_body;
     CCSprite *_ball;
