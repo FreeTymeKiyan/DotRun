@@ -80,15 +80,25 @@
 }
 
 -(void) gameLogic:(ccTime)dt {
-    [self generatePair: 0];
+    int pattern = arc4random() % 2;
+    NSLog(@"pattern: %i", pattern);
+    [self generatePattern: pattern]; // left lower and right upper
 }
 
--(void) generatePair: (int) pattern {
+-(void) generatePattern: (int) pattern {
     int randomHeight = abs(arc4random());
-//    [self generateBar:IS_UPPER direction:FROM_LEFT height:randomHeight];
-    [self generateBar:IS_LOWER direction:FROM_LEFT height:randomHeight];
-//    [self generateBar:IS_LOWER direction:FROM_RIGHT height:randomHeight];
-    [self generateBar:IS_UPPER direction:FROM_RIGHT height:randomHeight];
+    switch (pattern) {
+        case 0:
+            [self generateBar:IS_LOWER direction:FROM_LEFT height:randomHeight];
+            [self generateBar:IS_UPPER direction:FROM_RIGHT height:randomHeight];
+            break;
+        case 1:
+            [self generateBar:IS_UPPER direction:FROM_LEFT height:randomHeight];
+            [self generateBar:IS_LOWER direction:FROM_RIGHT height:randomHeight];
+            break;
+        default:
+            break;
+    }
 }
 
 -(void) spriteMoveFinished:(id)sender {
