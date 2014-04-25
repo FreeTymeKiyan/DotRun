@@ -20,7 +20,7 @@
     CCSprite *_ball;
     CGPoint posChange;
     Level *level;
-    GLESDebugDraw *_debugDraw;
+//    GLESDebugDraw *_debugDraw;
     MyContactListener *_contactListener;
     CCLabelTTF *scoreLabel;
 }
