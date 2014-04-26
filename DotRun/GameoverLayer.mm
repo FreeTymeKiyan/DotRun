@@ -56,6 +56,21 @@
         CCMenuItem* shareItem = [CCMenuItemFont itemWithString:@"Share" block:^(id sender) {
             NSLog(@"Share Clicked");
 //            system share
+            NSArray *activityItems;
+            NSString *sharingText = [NSString stringWithFormat:@"I just got %i in DotRun! See who can beat me!", bestScore];
+            
+            CCScene *scene = [[CCDirector sharedDirector] runningScene];
+            CCNode *n = [scene.children objectAtIndex:0];
+            UIImage *sharingImage = [self screenshotWithStartNode:n];
+            
+            if (sharingImage != nil) {
+                activityItems = @[sharingText, sharingImage];
+            } else {
+                activityItems = @[sharingText];
+            }
+            UIActivityViewController *activityController =
+            [[UIActivityViewController alloc] initWithActivityItems:activityItems  applicationActivities:nil];
+            [[CCDirector sharedDirector] presentViewController:activityController animated:YES completion:nil];
         }];
         [shareItem setColor:ccBLACK];
         CCMenuItem* replayItem = [CCMenuItemFont itemWithString:@"Replay" block:^(id sender) {
@@ -78,6 +93,21 @@
 
     }
     return self;
+}
+
+-(UIImage*) screenshotWithStartNode:(CCNode*)startNode
+{
+    [CCDirector sharedDirector].nextDeltaTimeZero = YES;
+    
+    CGSize winSize = [CCDirector sharedDirector].winSize;
+    CCRenderTexture* rtx =
+    [CCRenderTexture renderTextureWithWidth:winSize.width
+                                     height:winSize.height];
+    [rtx begin];
+    [startNode visit];
+    [rtx end];
+    
+    return [rtx getUIImage];
 }
 
 - (void)dealloc {

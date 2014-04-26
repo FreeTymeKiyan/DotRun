@@ -10,6 +10,8 @@
 #import "cocos2d.h"
 #import "HelloWorldLayer.h"
 #import "MainLayer.h"
+#import <Social/Social.h>
+#import <UIKit/UIKit.h>
 
 @interface GameoverLayer : CCLayerColor {
     CCLabelTTF* scoreLable;

@@ -191,6 +191,7 @@
 		BB3AFB411903400500D53E0B /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB3AFB401903400500D53E0B /* GLES-Render.mm */; };
 		BB3AFB431903400500D53E0B /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = BB3AFB421903400500D53E0B /* blocks.png */; };
 		BB5B8E9519058D7E00FDD0A1 /* Level.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB5B8E9419058D7E00FDD0A1 /* Level.mm */; };
+		BB6456CE190C4062001CA455 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB6456CD190C4062001CA455 /* Social.framework */; };
 		BB998A33190A22820072C836 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3AF9081903400300D53E0B /* UIKit.framework */; };
 		BBB491011907560100DFDBD3 /* MyContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = BBB491001907560000DFDBD3 /* MyContactListener.mm */; };
 		BBB4910419075B3100DFDBD3 /* GameoverLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BBB4910319075B3100DFDBD3 /* GameoverLayer.mm */; };
@@ -581,6 +582,7 @@
 		BB3AFB421903400500D53E0B /* blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blocks.png; path = Resources/blocks.png; sourceTree = "<group>"; };
 		BB5B8E9319058D7E00FDD0A1 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
 		BB5B8E9419058D7E00FDD0A1 /* Level.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Level.mm; sourceTree = "<group>"; };
+		BB6456CD190C4062001CA455 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		BBB490FF1907560000DFDBD3 /* MyContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyContactListener.h; sourceTree = "<group>"; };
 		BBB491001907560000DFDBD3 /* MyContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyContactListener.mm; sourceTree = "<group>"; };
 		BBB4910219075B3100DFDBD3 /* GameoverLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameoverLayer.h; sourceTree = "<group>"; };
@@ -594,6 +596,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB6456CE190C4062001CA455 /* Social.framework in Frameworks */,
 				BB998A33190A22820072C836 /* UIKit.framework in Frameworks */,
 				BB3AF9111903400300D53E0B /* GameKit.framework in Frameworks */,
 				BB3AF9031903400300D53E0B /* OpenAL.framework in Frameworks */,
@@ -630,6 +633,7 @@
 		BB3AF8FD1903400300D53E0B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BB6456CD190C4062001CA455 /* Social.framework */,
 				BB3AF8FE1903400300D53E0B /* QuartzCore.framework */,
 				BB3AF9001903400300D53E0B /* OpenGLES.framework */,
 				BB3AF9021903400300D53E0B /* OpenAL.framework */,
