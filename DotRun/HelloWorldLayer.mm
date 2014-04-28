@@ -8,14 +8,6 @@
 
 #import "HelloWorldLayer.h"
 
-#define PTM_RATIO 32.0
-#define FROM_RIGHT 0
-#define FROM_LEFT 1
-#define IS_UPPER 0
-#define IS_LOWER 1
-#define THRESHOLD 26
-#define PATTERN_NO 6
-
 @implementation HelloWorldLayer
 
 +(id) scene {
@@ -115,9 +107,9 @@
 }
 
 -(void) spriteMoveFinished:(id)sender {
-    CCSprite *sprite = (CCSprite *)sender;
+    CCSprite* sprite = (CCSprite *)sender;
     
-    b2Body *spriteBody = NULL;
+    b2Body* spriteBody = NULL;
     for(b2Body *b = _world->GetBodyList(); b; b=b->GetNext()) {
         if (b->GetUserData() != NULL) {
             CCSprite *curSprite = (CCSprite *)b->GetUserData();
