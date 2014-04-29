@@ -24,8 +24,6 @@
         if (![[NSUserDefaults standardUserDefaults] boolForKey:@"everLaunched"]) {
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"everLaunched"];
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
-        } else {
-            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
         }
         
         CGSize s = [[CCDirector sharedDirector]winSize];
@@ -53,15 +51,13 @@
 //        CCMenuItemToggle* toggleItem = [CCMenuItemToggle itemWithItems:[NSArray arrayWithObjects:tutorialItem2, tutorialItem1, nil]];
         CCMenuItemToggle* toggleItem;
         
-        BOOL isFirst = [[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"];
-        NSLog(@"isFirst: %hhd", isFirst);
-        if (isFirst) {
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"]) {
             toggleItem = [CCMenuItemToggle itemWithItems:[NSArray arrayWithObjects:tutorialItem2, tutorialItem1, nil]];
         } else {
             toggleItem = [CCMenuItemToggle itemWithItems:[NSArray arrayWithObjects:tutorialItem1, tutorialItem2, nil]];
         }
         [toggleItem setBlock:^(id sender) {
-            NSLog(@"toggleitem clicked");
+//            NSLog(@"toggleitem clicked");
             [[NSUserDefaults standardUserDefaults] setBool:![[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"] forKey:@"firstLaunch"];
         }];
 //        CCMenuItemFont* leaderboardItem = [CCMenuItemFont itemWithString:@"Leaderboard" block:^(id sender) {
