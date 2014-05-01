@@ -10,8 +10,9 @@
 #import "cocos2d.h"
 #import "HelloWorldLayer.h"
 #import "TutorialLayer.h"
+#import <GameKit/GameKit.h>
 
-@interface MainLayer : CCLayerColor {
+@interface MainLayer : CCLayerColor <GKGameCenterControllerDelegate> {
     
 }
 

@@ -139,6 +139,23 @@
 	// make main window visible
 	[window_ makeKeyAndVisible];
     
+    if([self isGameCenterAvailable]) {
+        GKLocalPlayer* localPlayer = [GKLocalPlayer localPlayer];
+        localPlayer.authenticateHandler = ^(UIViewController *viewController,NSError *error) {
+            if (localPlayer.authenticated) {
+                // already authenticated
+                NSLog(@"already authenticated");
+            } else if(viewController) {
+                [navController_ presentViewController:viewController animated:YES completion:nil];
+                // present the login form
+                NSLog(@"present the login form");
+            } else {
+                // problem with authentication,probably bc the user doesn't use Game Center
+                NSLog(@"Error:%@", error);
+            } 
+        };
+    }
+    
 	return YES;
 }
 
@@ -182,13 +199,20 @@
 }
 
 // next delta time will be zero
--(void) applicationSignificantTimeChange:(UIApplication *)application
-{
+-(void) applicationSignificantTimeChange:(UIApplication *)application {
 	[[CCDirector sharedDirector] setNextDeltaTimeZero:YES];
 }
 
-- (void) dealloc
-{
+-(BOOL) isGameCenterAvailable {
+    // check for presence of GKLocalPlayer API
+    Class gcClass = (NSClassFromString(@"GKLocalPlayer"));
+    NSString *reqSysVer = @"7.0";
+    NSString *currSysVer = [[UIDevice currentDevice] systemVersion];
+    BOOL osVersionSupported = ([currSysVer compare:reqSysVer options:NSNumericSearch] !=NSOrderedAscending);
+    return (gcClass && osVersionSupported);
+}
+
+- (void) dealloc {
 	[window_ release];
 	[navController_ release];
 	

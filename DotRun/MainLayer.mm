@@ -60,12 +60,15 @@
 //            NSLog(@"toggleitem clicked");
             [[NSUserDefaults standardUserDefaults] setBool:![[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"] forKey:@"firstLaunch"];
         }];
-//        CCMenuItemFont* leaderboardItem = [CCMenuItemFont itemWithString:@"Leaderboard" block:^(id sender) {
+        
+        CCMenuItemFont* leaderboardItem = [CCMenuItemFont itemWithString:@"Leaderboard" block:^(id sender) {
 //            NSLog(@"Leaderboard clicked");
-//        }];
-//        [leaderboardItem setColor:ccBLACK];
+            [self showGameCenter];
+        }];
+        [leaderboardItem setColor:ccBLACK];
+        
         // add menu
-        CCMenu* menu = [CCMenu menuWithItems:arcadeItem, toggleItem, nil];
+        CCMenu* menu = [CCMenu menuWithItems:arcadeItem, toggleItem, leaderboardItem, nil];
         [menu alignItemsHorizontallyWithPadding:40];
         [menu setPosition:ccp(s.width / 2, s.height / 2 - titleLabel.contentSize.height / 2)];
         [self addChild:menu];
@@ -73,6 +76,20 @@
         [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
     }
     return self;
+}
+
+- (void) showGameCenter {
+    GKGameCenterViewController *gameCenterController = [[GKGameCenterViewController alloc] init];
+    if (gameCenterController != nil) {
+        __block id copy_self = self;
+        gameCenterController.gameCenterDelegate = copy_self;
+        [[CCDirector sharedDirector] presentViewController:gameCenterController animated:YES completion:nil];
+        [gameCenterController release];
+    }
+}
+
+- (void) gameCenterViewControllerDidFinish:(GKGameCenterViewController *)gameCenterViewController {
+    [[CCDirector sharedDirector] dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void) dealloc {

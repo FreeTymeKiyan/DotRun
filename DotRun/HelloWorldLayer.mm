@@ -259,7 +259,7 @@
             CCSprite* a = (CCSprite *)bodyA->GetUserData();
             CCSprite* b = (CCSprite *)bodyB->GetUserData();
             if(a.tag != b.tag) {
-                NSLog(@"%@", @"Game Over!!!");
+//                NSLog(@"%@", @"Game Over!!!");
                 [self gameOver];
             }
         }
@@ -281,8 +281,10 @@
     [self unschedule:@selector(gameLogic:)];
     
     if ([[NSUserDefaults standardUserDefaults] integerForKey:@"BestScore"] < [level getScore]) {
+        // new best score
         [[NSUserDefaults standardUserDefaults] setInteger:[level getScore] forKey:@"BestScore"];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isNewBest"];
+        [self reportScore:[level getScore] forLeaderboardID:@"mode1"];
     } else
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isNewBest"];
     // move to next scene
@@ -327,6 +329,23 @@
     [level upgrade];
     [self unschedule:@selector(gameLogic:)];
     [self schedule:@selector(gameLogic:) interval:[level getInterval]];
+}
+
+-(void) reportScore: (int64_t) score forLeaderboardID: (NSString*) identifier {
+    GKScore *scoreReporter = [[GKScore alloc] initWithLeaderboardIdentifier: identifier];
+    scoreReporter.value = score;
+    scoreReporter.context = 0;
+    
+    NSArray *scores = @[scoreReporter];
+    [GKScore reportScores:scores withCompletionHandler:^(NSError *error) {
+        //Do something interesting here.
+        if (error != nil) {
+            // handle the reporting error
+//            NSLog(@"Report Score Error");
+        } else {
+//            NSLog(@"Report Score Success");
+        }
+    }];
 }
 
 -(void) dealloc {

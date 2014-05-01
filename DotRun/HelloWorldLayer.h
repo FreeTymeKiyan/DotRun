@@ -13,6 +13,7 @@
 #import "MyContactListener.h"
 #import "GameoverLayer.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import <GameKit/GameKit.h>
 
 #define PTM_RATIO 32.0
 #define FROM_RIGHT 0
