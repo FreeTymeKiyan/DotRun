@@ -28,13 +28,13 @@
         
         CGSize s = [[CCDirector sharedDirector]winSize];
         // add title
-        CCLabelTTF* titleLabel = [CCLabelTTF labelWithString:@"Dot Run" fontName:@"Marker Felt" fontSize:64 ];
+        CCLabelTTF* titleLabel = [CCLabelTTF labelWithString:@"DOTRUN" fontName:@"Marker Felt" fontSize:64 ];
         [titleLabel setColor:ccBLACK];
-        [titleLabel setPosition:ccp(s.width / 2, s.height / 2 + titleLabel.contentSize.height / 2)];
+        [titleLabel setPosition:ccp(s.width / 2, s.height * 2 / 3)];
         [self addChild:titleLabel];
         // add menu items
         [CCMenuItemFont setFontSize:28];
-        CCMenuItemFont* arcadeItem = [CCMenuItemFont itemWithString:@"Arcade" block:^(id sender) {
+        CCMenuItemFont* arcadeItem = [CCMenuItemFont itemWithString:@"Start" block:^(id sender) {
 //            NSLog(@"Arcade clicked");
             if ([[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"]) {
                 [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[TutorialLayer scene]]];
@@ -69,8 +69,8 @@
         
         // add menu
         CCMenu* menu = [CCMenu menuWithItems:arcadeItem, toggleItem, leaderboardItem, nil];
-        [menu alignItemsHorizontallyWithPadding:40];
-        [menu setPosition:ccp(s.width / 2, s.height / 2 - titleLabel.contentSize.height / 2)];
+        [menu alignItemsVerticallyWithPadding:10];
+        [menu setPosition:ccp(s.width / 2, s.height / 3)];
         [self addChild:menu];
         
         [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
