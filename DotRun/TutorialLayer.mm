@@ -62,7 +62,7 @@
         _body->CreateFixture(&ballShapeDef);
         
         [self schedule:@selector(update:)];
-        [self schedule:@selector(next:) interval:3.0];
+        [self schedule:@selector(next:) interval:5.0];
     }
     return self;
 }
@@ -73,7 +73,12 @@
         STEP--;
     }
     CGSize winSize = [[CCDirector sharedDirector] winSize];
+    [self unschedule:@selector(next:)];
     if (STEP == 0) {
+        [instructionLabel setString:@"Bigger Angle Faster Speed"];
+        STEP++;
+        [self schedule:@selector(next:) interval:5.0];
+    } else if(STEP == 1) {
         // move down in the circle
         [instructionLabel setString:@"Move Down into the Circle"];
         [instructionLabel setPosition:ccp(winSize.width / 2, winSize.height - instructionLabel.contentSize.height)];
@@ -86,7 +91,8 @@
             [self generatePair:IS_LOWER direction:FROM_RIGHT height:height];
             STEP++;
         }
-    } else if(STEP == 1) {
+        [self schedule:@selector(next:) interval:3.0];
+    } else if (STEP == 2) {
         [instructionLabel setString:@"Move Up into the Circle"];
         [instructionLabel setPosition:ccp(winSize.width / 2, instructionLabel.contentSize.height)];
         [target setPosition:ccp(winSize.width / 2, winSize.height * 3 / 4)];
@@ -98,13 +104,13 @@
             [self generatePair:IS_UPPER direction:FROM_RIGHT height:height];
             STEP++;
         }
-
-    } else if (STEP == 2) {
+        [self schedule:@selector(next:) interval:3.0];
+    } else {
         // remove circle and label
         [target setPosition:ccp(-target.contentSize.width / 2, -target.contentSize.height / 2)];
         [instructionLabel setPosition:ccp(-instructionLabel.contentSize.width / 2, -instructionLabel.contentSize.height / 2)];
         // stop and show choices
-        CCLabelTTF* tutorialLabel = [CCLabelTTF labelWithString:@"Tutorial" fontName:@"Marker Felt" fontSize:64];
+        CCLabelTTF* tutorialLabel = [CCLabelTTF labelWithString:@"New Game?" fontName:@"Marker Felt" fontSize:64];
         [tutorialLabel setColor:ccBLACK];
         [tutorialLabel setPosition:ccp(winSize.width / 2, winSize.height * 2 / 3)];
         [self addChild:tutorialLabel];
