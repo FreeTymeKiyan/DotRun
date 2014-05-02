@@ -34,7 +34,7 @@
         [self addChild:titleLabel];
         // add menu items
         [CCMenuItemFont setFontSize:28];
-        CCMenuItemFont* arcadeItem = [CCMenuItemFont itemWithString:@"Start" block:^(id sender) {
+        CCMenuItemFont* arcadeItem = [CCMenuItemFont itemWithString:@"New Game" block:^(id sender) {
 //            NSLog(@"Arcade clicked");
             if ([[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"]) {
                 [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[TutorialLayer scene]]];
@@ -67,9 +67,16 @@
         }];
         [leaderboardItem setColor:ccBLACK];
         
+        CCMenuItemFont* rateItem = [CCMenuItemFont itemWithString:@"Rate Me!" block:^(id sender) {
+//            NSLog(@"rateitem clciked");
+            NSString *urlStr = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%d", 872519440];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+        }];
+        [rateItem setColor:ccBLACK];
+        
         // add menu
-        CCMenu* menu = [CCMenu menuWithItems:arcadeItem, toggleItem, leaderboardItem, nil];
-        [menu alignItemsVerticallyWithPadding:10];
+        CCMenu* menu = [CCMenu menuWithItems:arcadeItem, rateItem, toggleItem, leaderboardItem,  nil];
+        [menu alignItemsInColumns:[NSNumber numberWithInt:2], [NSNumber numberWithInt:2], nil];
         [menu setPosition:ccp(s.width / 2, s.height / 3)];
         [self addChild:menu];
         
