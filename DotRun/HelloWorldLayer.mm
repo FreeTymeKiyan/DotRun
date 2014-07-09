@@ -287,7 +287,16 @@
         [self reportScore:[level getScore] forLeaderboardID:@"mode1"];
     } else
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isNewBest"];
+    // TODO: add particle effect
+    CCParticleSystem *system = [CCParticleSystemQuad particleWithFile:@"dotPieces.plist"];
+    system.position = _ball.position;
+    [self addChild:system];
+    [_ball removeFromParent];
     // move to next scene
+    [self performSelector:@selector(gameOverScene:) withObject:nil afterDelay:1.0f];
+}
+
+-(void) gameOverScene:(ccTime)dt {
     CCScene* s = [GameoverLayer scene];
     GameoverLayer* layer = [GameoverLayer node];
     [layer setScore:[level getScore]];

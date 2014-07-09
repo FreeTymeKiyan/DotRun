@@ -57,7 +57,7 @@
             NSLog(@"Share Clicked");
 //            system share
             NSArray *activityItems;
-            NSString *sharingText = [NSString stringWithFormat:@"I just got %i in DotRun! See who can beat me!", bestScore];
+            NSString *sharingText = [NSString stringWithFormat:@"I just got %i in DotRun! See who can beat me! Download: https://itunes.apple.com/us/app/dotrun/id872519440?ls=1&mt=8", bestScore];
             
             CCScene *scene = [[CCDirector sharedDirector] runningScene];
             CCNode *n = [scene.children objectAtIndex:0];

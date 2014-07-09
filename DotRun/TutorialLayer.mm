@@ -236,7 +236,7 @@
 
 -(void) accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
     posChange.x = posChange.x *0.4f+ acceleration.x *7.0f;
-    //    NSLog(@"1---x:%f, y:%f", acceleration.x, acceleration.y);
+//    NSLog(@"1---x:%f, y:%f", acceleration.x, acceleration.y);
     if (posChange.x>100) {
         posChange.x=100;
     }
