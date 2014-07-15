@@ -205,6 +205,7 @@
 		BBF5DE56196F8C84002DBB4B /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF5DE55196F8C84002DBB4B /* CoreTelephony.framework */; };
 		BBF5DE58196F8C8C002DBB4B /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF5DE57196F8C8C002DBB4B /* MessageUI.framework */; };
 		BBF5DE5A196F8C9A002DBB4B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF5DE59196F8C9A002DBB4B /* SystemConfiguration.framework */; };
+		BBF5DE5E1974D709002DBB4B /* customParticle.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF5DE5D1974D709002DBB4B /* customParticle.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -620,6 +621,7 @@
 		BBF5DE55196F8C84002DBB4B /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		BBF5DE57196F8C8C002DBB4B /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		BBF5DE59196F8C9A002DBB4B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BBF5DE5D1974D709002DBB4B /* customParticle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = customParticle.png; path = Resources/customParticle.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -723,6 +725,7 @@
 			isa = PBXGroup;
 			children = (
 				BB3AF9141903400300D53E0B /* Default.png */,
+				BBF5DE5D1974D709002DBB4B /* customParticle.png */,
 				BBF5DE3E196CF0E3002DBB4B /* dotPieces.plist */,
 				BB3AF9161903400300D53E0B /* Default@2x.png */,
 				BB3AF9181903400300D53E0B /* Default-568h@2x.png */,
@@ -1360,6 +1363,7 @@
 				BB114A9D190A06AB007C3C90 /* Icon-Small@2x.png in Resources */,
 				BB114A9E190A06AB007C3C90 /* Icon.png in Resources */,
 				BB3AF9211903400300D53E0B /* Icon-Small.png in Resources */,
+				BBF5DE5E1974D709002DBB4B /* customParticle.png in Resources */,
 				BB114A99190A06AB007C3C90 /* Ball_red.jpg in Resources */,
 				BB114A9C190A06AB007C3C90 /* Icon-72.png in Resources */,
 				BB3AF9151903400300D53E0B /* Default.png in Resources */,
