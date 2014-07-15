@@ -12,11 +12,14 @@
 #import "MainLayer.h"
 #import <Social/Social.h>
 #import <UIKit/UIKit.h>
+#import "GADBannerView.h"
 
 @interface GameoverLayer : CCLayerColor {
     CCLabelTTF* scoreLable;
+    GADBannerView *bannerView_;
 }
 
 +(CCScene *)scene;
 -(void) setScore: (int) s;
+
 @end

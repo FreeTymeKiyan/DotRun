@@ -88,6 +88,16 @@
 		[menu alignItemsHorizontallyWithPadding:40];
 		[menu setPosition:ccp(s.width/2, s.height/2 - bestLabel.contentSize.height - exitItem.contentSize.height / 2)];
 		
+        bannerView_ = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerLandscape];
+        bannerView_.adUnitID = @"ca-app-pub-3830008196770332/1637062801";
+        
+        UIViewController *vc = [UIApplication sharedApplication].keyWindow.rootViewController;
+        bannerView_.rootViewController = vc;
+        [bannerView_ setFrame:CGRectMake(0, s.height - 32, s.width, 32)];
+        [vc.view addSubview:bannerView_];
+        GADRequest *request = [GADRequest request];
+        request.testDevices = @[ @"3b9462c81bb3625a0fee115abbb10b30" ];
+        [bannerView_ loadRequest: request];
 		// Add the menu to the layer
 		[self addChild:menu];
 
@@ -113,6 +123,7 @@
 - (void)dealloc {
 //    [scoreLable release];
 //    scoreLable = nil;
+    [bannerView_ removeFromSuperview];
     [super dealloc];
 }
 
